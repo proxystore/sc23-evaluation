@@ -7,6 +7,7 @@ lines.markersize: 4
 lines.linewidth: 0.8
 
 figure.titlesize: 8
+figure.labelsize: 8
 figure.dpi: 400
 
 savefig.dpi: 400

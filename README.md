@@ -7,7 +7,7 @@ Data, analysis, and figures for the IPDPS submission.
 ```bash
 $ virtualenv venv
 $ . venv/bin/activate
-$ pip install -r requirements.py
+$ pip install -r requirements.txt
 $ jupyter-lab
 ```
 

@@ -1,6 +1,6 @@
-# IPDPS-2022-figures
+# SC23 ProxyStore Analysis
 
-Data, analysis, and figures for the IPDPS submission.
+Data, analysis, and figures for the SC23 ProxyStore paper.
 
 ## Get Started
 

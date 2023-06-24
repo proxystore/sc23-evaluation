@@ -1,6 +1,8 @@
 # SC23 ProxyStore Analysis
 
-Data, analysis, and figures for the SC23 ProxyStore paper.
+Data, analysis, and figures for the SC23 ProxyStore paper titled
+"Accelerating Communications in Federated Applications with Transparent
+Object Proxies". Read the preprint at https://arxiv.org/abs/2305.09593.
 
 ## Get Started
 

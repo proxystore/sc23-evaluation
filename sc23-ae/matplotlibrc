@@ -1,0 +1,36 @@
+# Font sizes
+axes.titlesize: 6
+axes.labelsize: 6
+figure.titlesize: 6
+figure.labelsize: 6
+legend.fontsize: 6
+xtick.labelsize: 6
+ytick.labelsize: 6
+
+# Figure parameters
+axes.linewidth: 0.7
+grid.linewidth: 0.7
+lines.markersize: 3.5
+lines.linewidth: 0.7
+xtick.major.width: 0.7
+xtick.minor.width: 0.7
+ytick.major.width: 0.7
+ytick.minor.width: 0.7
+
+# Rendering
+figure.dpi: 400
+savefig.dpi: 400
+savefig.format: png
+savefig.bbox: tight
+savefig.pad_inches: 0
+
+# Colors
+axes.labelcolor: "#212121"
+axes.edgecolor: "#212121"
+axes.prop_cycle: cycler('color', ['3F51B5', '279049', '5B2A86', 'E7770D', 'BC3838', '765242'])
+# Light-shaded versions: ['C19EE1', '7785AC', 'A5E6BA', 'D16666', 'F5A051', 'A77862']
+grid.color: "#212121"
+patch.edgecolor: "#212121"
+text.color: "#212121"
+xtick.color: "#212121"
+ytick.color: "#212121"

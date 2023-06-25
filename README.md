@@ -25,5 +25,5 @@ directory and figures should be output to `figures/`.
 ## SC23 AD/AE
 
 Our analysis of the raw data can be found in the provided notebooks.
-In addition, a Dockerfile and instructions for running 
+In addition, a Dockerfile and instructions for running
 mini versions of some of the experiments are provided in `sc23-ae/`.

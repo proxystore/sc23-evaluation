@@ -4,8 +4,11 @@ WORKDIR /workspace
 
 RUN git clone https://github.com/proxystore/benchmarks \
     && cd benchmarks \
-    && pip install -e .
+    && pip install --no-cache-dir -e .
 
-RUN apt -y update && apt install -y redis-server
+RUN apt-get -y update \
+    && apt-get install --no-install-recommends -y redis-server \
+    && apt-get clean autoclean \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY scripts/ /workspace

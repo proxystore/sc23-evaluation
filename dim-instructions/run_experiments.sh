@@ -4,10 +4,12 @@ rep=5
 bench=../sc23-proxystore-analysis/data/1-proxystore-with-faas-rdma/chameleon-noop.csv
 globus_compute_inputs="1 10 100 1000 10000 100000"
 input_sizes="1 10 100 1000 10000 100000 1000000 10000000 100000000 1000000000"
-ep="5982cb6a-6ae7-44c0-8d9e-04899eacb934"
 HOST=$(hostname -I | awk -F ' ' '{print $NF}')
 
-exp=$1 # 0 = all, 1 = zmq, 2 = margo, 3 = redis, 4 = dspaces, 5 = globus_compute
+
+ep=$1 # globus-compute-endpoint
+exp=$2 # 0 = all, 1 = zmq, 2 = margo, 3 = redis, 4 = dspaces, 5 = globus_compute
+
 echo $exp
 
 if [ $exp == 1 ] || [ $exp == 0 ]

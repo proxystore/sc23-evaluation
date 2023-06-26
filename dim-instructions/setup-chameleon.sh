@@ -17,16 +17,30 @@ sudo rm -rf /var/lib/apt/lists/*
 
 # Get analysis and benchmark repo
 #git clone -b dim-instructions https://github.com/proxystore/sc23-proxystore-analysis.git
-git clone -b dspaces https://github.com/proxystore/benchmarks.git
 
-mkdir downloads
-cd downloads
+if [ ! -d "/home/cc/benchmarks" ]
+then
+	echo 'cloning benchmarks'
+	git clone -b dspaces https://github.com/proxystore/benchmarks.git ~/benchmarks
+fi
+
+mkdir -p ~/downloads
+cd ~/downloads
 
 # install mellanox ib drivers
-wget http://www.mellanox.com/downloads/ofed/MLNX_OFED-4.9-6.0.6.0/MLNX_OFED_LINUX-4.9-6.0.6.0-ubuntu20.04-x86_64.tgz
-tar -xvf MLNX_OFED_LINUX-4.9-6.0.6.0-ubuntu20.04-x86_64.tgz
-cd MLNX_OFED_LINUX-4.9-6.0.6.0-ubuntu20.04-x86_64
-sudo ./mlnxofedinstall
+
+if [ ! -f "/home/cc/downloads/MLNX_OFED_LINUX-4.9-6.0.6.0-ubuntu20.04-x86_64.tgz" ]
+then
+	wget http://www.mellanox.com/downloads/ofed/MLNX_OFED-4.9-6.0.6.0/MLNX_OFED_LINUX-4.9-6.0.6.0-ubuntu20.04-x86_64.tgz
+fi
+
+if [ ! -d "/home/cc/downloads/MLNX_OFED_LINUX-4.9-6.0.6.0-ubuntu20.04-x86_64" ]
+then
+	tar -xvf MLNX_OFED_LINUX-4.9-6.0.6.0-ubuntu20.04-x86_64.tgz
+fi
+
+cd ~/downloads/MLNX_OFED_LINUX-4.9-6.0.6.0-ubuntu20.04-x86_64
+yes | sudo ./mlnxofedinstall
 sudo /etc/init.d/openibd restart
 
 #### Configure static IP for infiniband  ####
@@ -48,8 +62,8 @@ sudo /etc/init.d/openibd restart
 # Step 5: Verify that interface has been updated by running `ip addr show <interface>`
 
 x=$(hostname -I |  awk -F '.' '{print $--NF}')
-y=$(hostname -I | awk -F '.' '{print $NF}')
-sudo bash -c "cat >> /etc/netplan/01-netcfg.yaml" << EOL
+y=$(hostname -I | awk -F '.' '{print $NF}' | xargs)
+sudo bash -c "cat > /etc/netplan/01-netcfg.yaml" << EOL
 network:
  version: 2
  renderer: networkd
@@ -66,21 +80,42 @@ EOL
 sudo netplan apply
 
 # Install Spack
-git clone -c feature.manyFiles=true https://github.com/spack/spack.git
-source spack/share/spack/setup-env.sh
-echo 'source spack/share/spack/setup-env.sh' >> ~/.bashrc
+if [ ! -d "/home/cc/downloads/spack" ]
+then
+	git clone -c feature.manyFiles=true https://github.com/spack/spack.git ~/downloads/spack
+fi
+source ~/downloads/spack/share/spack/setup-env.sh
+
+setup_str='source /home/cc/downloads/spack/share/spack/setup-env.sh'
+activate_str='spack env activate proxystore -p'
+
+if grep -Fxq "$setup_str" ~/.bashrc
+then
+	echo "$setup_str" >> ~/.bashrc
+fi
+
+if grep -Fxq "$activate_str" ~/.bashrc
+then
+	echo "$activate_str" >> ~/.bashrc
+fi
 
 # Install Mochi packages
-git clone https://github.com/mochi-hpc/mochi-spack-packages.git
+
+if [ ! -d  "/home/cc/downloads/mochi-spack-packages" ]
+then	
+	git clone https://github.com/mochi-hpc/mochi-spack-packages.git /home/cc/downloads/mochi-spack-packages
+fi
 
 # Install DataSpaces packages
-git clone https://github.com/rdi2dspaces/dspaces-spack.git
+if [ ! -d "/home/cc/downloads/dspaces-spack" ]
+then
+	git clone https://github.com/rdi2dspaces/dspaces-spack.git /home/cc/downloads/dspaces-spack
+fi
 
-spack env create proxystore ~/sc23-proxystore-analysis/dim-instructions/spack-chameleon.yml
+spack env create proxystore ~/sc23-proxystore-analysis/dim-instructions/spack-chameleon.yml || true
 spack env activate proxystore -p
 spack install
 
-echo 'spack env activate proxystore -p' >> ~/.bashrc
 pip install --upgrade pip
 
 ## install UCX
@@ -89,10 +124,9 @@ pip install git+https://github.com/rapidsai/ucx-py.git@v0.30.00
 
 ## setup redis
 cd ~/benchmarks
-redis-server ~/sc23-proxystore-analysis/dim-instructions/redis.conf --daemonize yes
+redis-server ~/sc23-proxystore-analysis/dim-instructions/redis.conf
 
 ## setup benchmarks and execute
 cd ~/benchmarks
 pip install -e .
 pip install globus_compute_sdk
-#bash ~/sc23-proxystore-analysis/dim-instructions/run_experiments.sh 0

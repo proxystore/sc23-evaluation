@@ -16,7 +16,7 @@ sudo apt-get clean autoclean
 sudo rm -rf /var/lib/apt/lists/*
 
 # Get analysis and benchmark repo
-git clone -b dim-instructions https://github.com/proxystore/sc23-proxystore-analysis.git
+#git clone -b dim-instructions https://github.com/proxystore/sc23-proxystore-analysis.git
 git clone -b dspaces https://github.com/proxystore/benchmarks.git
 
 mkdir downloads
@@ -74,7 +74,7 @@ echo 'source spack/share/spack/setup-env.sh' >> ~/.bashrc
 git clone https://github.com/mochi-hpc/mochi-spack-packages.git
 
 # Install DataSpaces packages
-git clone git clone https://github.com/rdi2dspaces/dspaces-spack.git
+git clone https://github.com/rdi2dspaces/dspaces-spack.git
 
 spack env create proxystore ~/sc23-proxystore-analysis/dim-instructions/spack-chameleon.yml
 spack env activate proxystore -p
@@ -95,4 +95,4 @@ redis-server ~/sc23-proxystore-analysis/dim-instructions/redis.conf --daemonize 
 cd ~/benchmarks
 pip install -e .
 pip install globus_compute_sdk
-bash ~/sc23-proxystore-analysis/dim-instructions/run_experiments.sh 0
+#bash ~/sc23-proxystore-analysis/dim-instructions/run_experiments.sh 0

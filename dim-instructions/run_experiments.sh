@@ -12,7 +12,7 @@ echo $exp
 
 if [ $exp == 1 ] || [ $exp == 0 ]
 then
-        python -m psbench.benchmarks.globus_compute_tasks --globus-compute-endpoint $ep --output-sizes 0 --input-sizes ${input_sizes} --ps-backend ZMQ --ps-host ${HOST} --ps-port 60000 --task-repeat $rep --csv-file $bench
+        python -m psbench.benchmarks.globus_compute_tasks --globus-compute-endpoint $ep --output-sizes 0 --input-sizes ${input_sizes} --ps-backend ZMQ --ps-interface eno1 --ps-port 60000 --task-repeat $rep --csv-file $bench
 fi
 
 if [ $exp == 2 ] || [ $exp == 0 ]
@@ -42,5 +42,5 @@ fi
 
 if [ $exp == 6 ] || [ $exp == 0 ]
 then
-        python -m psbench.benchmarks.globus_compute_tasks --globus-compute-endpoint $ep --output-sizes 0 --input-sizes ${input_sizes} --ps-backend UCX --ps-port 60001 --task-repeat $rep --ps-interface ibp3s0 --csv-file $bench
+        python -m psbench.benchmarks.globus_compute_tasks --globus-compute-endpoint $ep --output-sizes 0 --input-sizes ${input_sizes} --ps-backend UCX --ps-port 60001 --task-repeat $rep --ps-interface eno1 --csv-file $bench
 fi

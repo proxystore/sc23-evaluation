@@ -10,9 +10,9 @@ Steps:
 1. Clone this repository onto both VMs \
 `git clone -b dim-instructions https://github.com/proxystore/sc23-proxystore-analysis.git`
 3. Execute the `setup-chameleon.sh` binary provided to configure the environment on both VMs \
-`bash sc23-proxystore-analysis/dim-instructions/setup-chameleone.sh`**
+`bash sc23-proxystore-analysis/dim-instructions/setup-chameleon.sh`
 4. Configure a Globus-Compute endpoint on one of the VMs \
-   Note: you will be required to authenticate via globus
+   Note: you will be required to authenticate via Globus
    ```
     globus-compute-endpoint configure ps-sc23
     globus-compute-endpoint start ps-sc23

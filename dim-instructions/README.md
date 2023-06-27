@@ -10,18 +10,22 @@ Steps:
 1. Clone this repository onto both VMs \
 `git clone -b dim-instructions https://github.com/proxystore/sc23-proxystore-analysis.git`
 2. Execute the `setup-chameleon.sh` binary provided to configure the environment on both VMs \
+**Note**: This script may fail at times, particularly during the Spack installation due to timeouts \
+it is recommended to run Spack install, until all packages are successfully installed, outside of the script \
+before proceeding with the remaining commands \
 `bash sc23-proxystore-analysis/dim-instructions/setup-chameleon.sh`
-3. Configure a Globus-Compute endpoint on one of the VMs \
-   Note: you will be required to authenticate via Globus
+4. Configure a Globus-Compute endpoint on one of the VMs \
+   **Note**: you will be required to authenticate via Globus
    ```
     globus-compute-endpoint configure ps-sc23
     globus-compute-endpoint start ps-sc23
    ```
-4.  Copy the endpoint id generated and use it to run the benchmarks in the other VM \
+5.  Copy the endpoint id generated and use it to run the benchmarks in the other VM \
+    **Note**: you will be required to authenticate via Globus \
     ```
     bash run_experiments.sh <endpoint_id> 0
     ```
-5. The results will be saved to the `sc23-proxystore-analysis/data/repro-chameleon-noop.csv` and can be
+7. The results will be saved to the `sc23-proxystore-analysis/data/repro-chameleon-noop.csv` and can be
    visualized with the help of `1-proxystore-with-faas-rdma.ipynb`
  
 

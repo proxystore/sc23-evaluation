@@ -1,5 +1,7 @@
 # SC23 ProxyStore Analysis
 
+[![DOI](https://zenodo.org/badge/527674090.svg)](https://zenodo.org/badge/latestdoi/527674090)
+
 Data, analysis, and figures for the SC23 ProxyStore paper titled
 "Accelerating Communications in Federated Applications with Transparent
 Object Proxies". Read the preprint at https://arxiv.org/abs/2305.09593.

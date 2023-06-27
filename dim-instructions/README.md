@@ -27,6 +27,14 @@ before proceeding with the remaining commands \
     ```
 7. The results will be saved to the `sc23-proxystore-analysis/data/repro-chameleon-noop.csv` and can be
    visualized with the help of `1-proxystore-with-faas-rdma.ipynb`
- 
+
+ ### Files in current directory
+ - `redis.conf` contains the Redis configuration used for running the experiments on both Polaris and Chameleon
+ - `run_experiments.sh` is the script used to execute the experiments. It takes and Globus Compute Endpoint ID and \
+ an integer represention which benchmarks to run (i.e., 0 = all, 1 = zmq, 2 = margo, 3 = redis, 4 = dspaces, 5 = globus_compute)
+ - `setup-chameleon.sh` is the Chameleon setup script. It configures the VM for Infiniband and sets a static IP for the network, \
+installs Spack and uses the `spack-chameleon.yml` to configure the environment and installs other dependencies for running the benchmarks
+- `spack-chameleon.yml` is the Spack environment configuration file for the Chameleon microbenchmarks.
+- `spack-polaris.yml` is the Spack environment configuration file for the Polaris microbenchmarks.
 
 

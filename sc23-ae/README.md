@@ -14,6 +14,12 @@ and copy the bash scripts for executing each experiment.
 Each experiment is designed to take at most around five minutes depending
 on hardware.
 
+The `chameleon-cloud/` directory contains scripts for running
+another experiment on specific Chameleon Cloud node types. We suggest starting
+with the scripts in this README before trying the Chameleon Cloud experiment.
+Instructions for the Chameleon Cloud experiment are found in
+[chameleon-cloud/README.md](chameleon-cloud/README.md).
+
 ## Setup
 
 **Clone the repository.**

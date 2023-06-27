@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rep=5
-bench=../sc23-proxystore-analysis/data/1-proxystore-with-faas-rdma/repro-chameleon-noop.csv
+bench=../../sc23-proxystore-analysis/data/1-proxystore-with-faas-rdma/repro-chameleon-noop.csv
 globus_compute_inputs="1 10 100 1000 10000 100000"
 input_sizes="1 10 100 1000 10000 100000 1000000 10000000 100000000 1000000000"
 HOST=$(hostname -I | awk -F ' ' '{print $NF}')

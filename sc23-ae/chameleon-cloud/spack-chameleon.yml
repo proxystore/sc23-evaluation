@@ -1,7 +1,7 @@
 spack:
   specs:
   # This section lists the "root specs" for the environment. This example
-  # only specfied Margo, which is a C API for construction of RPC-based
+  # only specified Margo, which is a C API for construction of RPC-based
   # clients and servers.  It can be replaced or augmented with other Mochi
   # components or microservices.
   - mochi-margo@0.13.1
@@ -33,7 +33,7 @@ spack:
   #  libfabric:
   #    variants: fabrics=rxm,tcp
   #
-  # Shared memory (no off-node comunication ##########################
+  # Shared memory (no off-node communication ##########################
   #  mercury:
   #    variants: ~boostsys ~checksum ~ofi
   #

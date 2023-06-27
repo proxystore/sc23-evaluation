@@ -102,7 +102,7 @@ fi
 # Install Mochi packages
 
 if [ ! -d  "/home/cc/downloads/mochi-spack-packages" ]
-then	
+then
 	git clone https://github.com/mochi-hpc/mochi-spack-packages.git /home/cc/downloads/mochi-spack-packages
 fi
 
